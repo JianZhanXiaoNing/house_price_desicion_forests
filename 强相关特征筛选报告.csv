@@ -1,0 +1,5 @@
+﻿,特征列表,最大相关系数,保留特征,删除特征
+组1,"['YearBuilt', 'GarageYrBlt']",0.826,['YearBuilt'],['GarageYrBlt']
+组2,"['TotalBsmtSF', '1stFlrSF']",0.82,['TotalBsmtSF'],['1stFlrSF']
+组3,"['GrLivArea', 'TotRmsAbvGrd']",0.825,['GrLivArea'],['TotRmsAbvGrd']
+组4,"['GarageCars', 'GarageArea']",0.882,['GarageCars'],['GarageArea']
