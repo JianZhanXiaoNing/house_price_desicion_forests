@@ -1,0 +1,50 @@
+C:\Users\19734\Desktop\Tensorflow_forests\.venv\Scripts\python.exe C:\Users\19734\Desktop\model_improved\mdoel_improved_generated.py 
+============================================================
+步骤1：加载原模型和原始数据...
+============================================================
+原模型加载成功（类型：<class 'sklearn.pipeline.Pipeline'>）
+原始数据加载成功：特征数79，样本数1460
+原模型参数：{'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': 20, 'max_features': 1.0, 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 'n_estimators': 300, 'n_jobs': None, 'oob_score': False, 'random_state': 42, 'verbose': 0, 'warm_start': False}
+
+原模型测试集性能：RMSE=28961.17美元，R²=0.8907
+
+============================================================
+步骤2：筛选强相关冗余特征...
+============================================================
+数值特征总数：36
+识别到4组强相关特征：
+- 组1：['YearBuilt', 'GarageYrBlt']（最大相关系数：0.826）
+- 组2：['TotalBsmtSF', '1stFlrSF']（最大相关系数：0.82）
+- 组3：['GrLivArea', 'TotRmsAbvGrd']（最大相关系数：0.825）
+- 组4：['GarageCars', 'GarageArea']（最大相关系数：0.882）
+- 组1：保留['YearBuilt']，删除['GarageYrBlt']
+- 组2：保留['TotalBsmtSF']，删除['1stFlrSF']
+- 组3：保留['GrLivArea']，删除['TotRmsAbvGrd']
+- 组4：保留['GarageCars']，删除['GarageArea']
+
+筛选结果：原始特征79个 → 筛选后47个
+删除的冗余特征：['MSSubClass', 'LotFrontage', 'LotArea', 'OverallQual', 'OverallCond', 'YearRemodAdd', 'MasVnrArea', 'BsmtFinSF1', 'BsmtFinSF2', 'BsmtUnfSF', '1stFlrSF', '2ndFlrSF', 'LowQualFinSF', 'BsmtFullBath', 'BsmtHalfBath', 'FullBath', 'HalfBath', 'BedroomAbvGr', 'KitchenAbvGr', 'TotRmsAbvGrd', 'Fireplaces', 'GarageYrBlt', 'GarageArea', 'WoodDeckSF', 'OpenPorchSF', 'EnclosedPorch', '3SsnPorch', 'ScreenPorch', 'PoolArea', 'MiscVal', 'MoSold', 'YrSold']
+特征重要性对比图已保存
+
+============================================================
+步骤3：训练优化后模型...
+============================================================
+优化后模型测试集性能：RMSE=30903.91美元，R²=0.8755
+
+============================================================
+步骤4：保存结果...
+============================================================
+优化后模型已保存为：optimized_rf_model.pkl
+筛选报告已保存为：强相关特征筛选报告.csv
+性能对比报告已保存为：模型优化性能对比.csv
+
+============================================================
+最终性能对比总结：
+============================================================
+      指标        原模型      优化后模型       变化量    变化率
+RMSE（美元） 28961.1700 30903.9100 1942.7400  6.71%
+R²（拟合优度）     0.8907     0.8755   -0.0152 -1.71%
+
+❌ 优化未达预期，可调整corr_threshold阈值重试（当前0.7）
+
+进程已结束，退出代码为 0

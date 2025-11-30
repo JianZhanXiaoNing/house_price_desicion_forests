@@ -1,0 +1,114 @@
+步骤1：加载原模型和数据...
+============================================================
+模型加载成功（类型：<class 'sklearn.pipeline.Pipeline'>）
+数据加载成功：特征数79，样本数1460
+复用模型参数：{'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': 20, 'max_features': 1.0, 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 'n_estimators': 300, 'n_jobs': None, 'oob_score': False, 'random_state': 42, 'verbose': 0, 'warm_start': False}
+
+基准模型性能（优化前）：RMSE=28775.01美元，R²=0.8921
+特征MSZoning的稀有类别：['FV', 'RH', 'C (all)']（每个类别占比<5%）
+特征Street的稀有类别：['Grvl']（每个类别占比<5%）
+特征LotShape的稀有类别：['IR2', 'IR3']（每个类别占比<5%）
+特征LandContour的稀有类别：['Bnk', 'HLS', 'Low']（每个类别占比<5%）
+特征Utilities的稀有类别：['NoSeWa']（每个类别占比<5%）
+特征LotConfig的稀有类别：['FR2', 'FR3']（每个类别占比<5%）
+特征LandSlope的稀有类别：['Mod', 'Sev']（每个类别占比<5%）
+特征Neighborhood的稀有类别：['Sawyer', 'BrkSide', 'Crawfor', 'SawyerW', 'Mitchel', 'NoRidge', 'Timber', 'IDOTRR', 'SWISU', 'StoneBr', 'ClearCr', 'Blmngtn', 'BrDale', 'MeadowV', 'Veenker', 'NPkVill', 'Blueste']（每个类别占比<5%）
+特征Condition1的稀有类别：['Artery', 'RRAn', 'PosN', 'RRAe', 'PosA', 'RRNn', 'RRNe']（每个类别占比<5%）
+特征Condition2的稀有类别：['Feedr', 'Artery', 'PosN', 'PosA', 'RRNn', 'RRAe', 'RRAn']（每个类别占比<5%）
+特征BldgType的稀有类别：['Duplex', 'Twnhs', '2fmCon']（每个类别占比<5%）
+特征HouseStyle的稀有类别：['SLvl', 'SFoyer', '1.5Unf', '2.5Unf', '2.5Fin']（每个类别占比<5%）
+特征RoofStyle的稀有类别：['Flat', 'Gambrel', 'Mansard', 'Shed']（每个类别占比<5%）
+特征RoofMatl的稀有类别：['Tar&Grv', 'WdShngl', 'WdShake', 'Metal', 'ClyTile', 'Roll']（每个类别占比<5%）
+特征Exterior1st的稀有类别：['CemntBd', 'BrkFace', 'Stucco', 'WdShing', 'AsbShng', 'BrkComm', 'ImStucc', 'CBlock', 'AsphShn', 'Stone']（每个类别占比<5%）
+特征Exterior2nd的稀有类别：['CmentBd', 'Wd Shng', 'Stucco', 'AsbShng', 'BrkFace', 'ImStucc', 'Brk Cmn', 'AsphShn', 'Stone', 'Other', 'CBlock']（每个类别占比<5%）
+特征MasVnrType的稀有类别：['BrkCmn']（每个类别占比<5%）
+特征ExterQual的稀有类别：['Ex', 'Fa']（每个类别占比<5%）
+特征ExterCond的稀有类别：['Fa', 'Ex', 'Po']（每个类别占比<5%）
+特征Foundation的稀有类别：['Slab', 'Stone', 'Wood']（每个类别占比<5%）
+特征BsmtQual的稀有类别：['Fa']（每个类别占比<5%）
+特征BsmtCond的稀有类别：['Gd', 'Fa', 'Po']（每个类别占比<5%）
+特征BsmtFinType2的稀有类别：['Rec', 'LwQ', 'BLQ', 'ALQ', 'GLQ']（每个类别占比<5%）
+特征Heating的稀有类别：['GasW', 'Grav', 'Wall', 'OthW', 'Floor']（每个类别占比<5%）
+特征HeatingQC的稀有类别：['Fa', 'Po']（每个类别占比<5%）
+特征Electrical的稀有类别：['FuseF', 'FuseP']（每个类别占比<5%）
+特征KitchenQual的稀有类别：['Fa']（每个类别占比<5%）
+特征Functional的稀有类别：['Min2', 'Min1', 'Mod', 'Maj1', 'Maj2', 'Sev']（每个类别占比<5%）
+特征FireplaceQu的稀有类别：['Fa', 'Ex', 'Po']（每个类别占比<5%）
+特征GarageType的稀有类别：['Basment', 'CarPort', '2Types']（每个类别占比<5%）
+特征GarageQual的稀有类别：['Fa', 'Gd', 'Ex', 'Po']（每个类别占比<5%）
+特征GarageCond的稀有类别：['Fa', 'Gd', 'Po', 'Ex']（每个类别占比<5%）
+特征PavedDrive的稀有类别：['P']（每个类别占比<5%）
+特征Fence的稀有类别：['MnWw']（每个类别占比<5%）
+特征MiscFeature的稀有类别：['Othr', 'Gar2', 'TenC']（每个类别占比<5%）
+特征SaleType的稀有类别：['COD', 'ConLD', 'ConLI', 'CWD', 'ConLw', 'Oth', 'Con']（每个类别占比<5%）
+特征SaleCondition的稀有类别：['Family', 'Alloca', 'AdjLand']（每个类别占比<5%）
+训练集中稀有类别样本数：930（占比：79.62%）
+特征MSZoning的稀有类别：['FV', 'C (all)', 'RH']（每个类别占比<5%）
+特征Street的稀有类别：['Grvl']（每个类别占比<5%）
+特征LotShape的稀有类别：['IR2', 'IR3']（每个类别占比<5%）
+特征LandContour的稀有类别：['Low']（每个类别占比<5%）
+特征LotConfig的稀有类别：['CulDSac', 'FR2', 'FR3']（每个类别占比<5%）
+特征LandSlope的稀有类别：['Mod', 'Sev']（每个类别占比<5%）
+特征Neighborhood的稀有类别：['Gilbert', 'BrkSide', 'Edwards', 'IDOTRR', 'Timber', 'Mitchel', 'ClearCr', 'NoRidge', 'MeadowV', 'Crawfor', 'NWAmes', 'StoneBr', 'SWISU', 'BrDale', 'NPkVill', 'Veenker', 'Blmngtn', 'Blueste']（每个类别占比<5%）
+特征Condition1的稀有类别：['Artery', 'RRAn', 'PosN', 'RRAe', 'RRNe']（每个类别占比<5%）
+特征Condition2的稀有类别：['Feedr', 'RRNn']（每个类别占比<5%）
+特征BldgType的稀有类别：['Twnhs', 'Duplex', '2fmCon']（每个类别占比<5%）
+特征HouseStyle的稀有类别：['SLvl', 'SFoyer', '1.5Unf', '2.5Fin']（每个类别占比<5%）
+特征RoofStyle的稀有类别：['Mansard', 'Gambrel', 'Flat']（每个类别占比<5%）
+特征RoofMatl的稀有类别：['WdShake', 'WdShngl', 'Tar&Grv', 'Membran']（每个类别占比<5%）
+特征Exterior1st的稀有类别：['BrkFace', 'WdShing', 'AsbShng', 'Stucco', 'Stone']（每个类别占比<5%）
+特征Exterior2nd的稀有类别：['BrkFace', 'ImStucc', 'Wd Shng', 'Stucco', 'AsbShng', 'Stone', 'Brk Cmn']（每个类别占比<5%）
+特征MasVnrType的稀有类别：['BrkCmn']（每个类别占比<5%）
+特征ExterQual的稀有类别：['Ex', 'Fa']（每个类别占比<5%）
+特征ExterCond的稀有类别：['Fa']（每个类别占比<5%）
+特征Foundation的稀有类别：['Slab', 'Stone']（每个类别占比<5%）
+特征BsmtQual的稀有类别：['Fa']（每个类别占比<5%）
+特征BsmtCond的稀有类别：['Gd', 'Fa', 'Po']（每个类别占比<5%）
+特征BsmtFinType1的稀有类别：['LwQ']（每个类别占比<5%）
+特征BsmtFinType2的稀有类别：['BLQ', 'LwQ', 'Rec', 'GLQ', 'ALQ']（每个类别占比<5%）
+特征Heating的稀有类别：['GasW', 'Grav']（每个类别占比<5%）
+特征HeatingQC的稀有类别：['Fa']（每个类别占比<5%）
+特征CentralAir的稀有类别：['N']（每个类别占比<5%）
+特征Electrical的稀有类别：['FuseF', 'Mix']（每个类别占比<5%）
+特征KitchenQual的稀有类别：['Fa']（每个类别占比<5%）
+特征Functional的稀有类别：['Maj1', 'Min2', 'Min1', 'Mod', 'Maj2']（每个类别占比<5%）
+特征FireplaceQu的稀有类别：['Fa', 'Po', 'Ex']（每个类别占比<5%）
+特征GarageType的稀有类别：['Basment', 'CarPort']（每个类别占比<5%）
+特征GarageQual的稀有类别：['Fa', 'Po', 'Gd']（每个类别占比<5%）
+特征GarageCond的稀有类别：['Fa', 'Po']（每个类别占比<5%）
+特征PavedDrive的稀有类别：['P']（每个类别占比<5%）
+特征Fence的稀有类别：['MnWw']（每个类别占比<5%）
+特征SaleType的稀有类别：['COD', 'ConLD', 'ConLI', 'Oth', 'ConLw']（每个类别占比<5%）
+特征SaleCondition的稀有类别：['Alloca', 'Family']（每个类别占比<5%）
+测试集中稀有类别样本数：229（占比：78.42%）
+
+============================================================
+步骤3：训练稀有类别优化模型（仅过采样）...
+============================================================
+
+开始过采样：原始稀有样本数930，放大2倍
+过采样完成：总样本数2098，稀有样本占比88.66%
+
+优化后模型整体性能：RMSE=27429.84美元，R²=0.9019
+优化后模型稀有样本性能：RMSE=29257.45美元，R²=0.9018
+
+============================================================
+步骤4：保存结果...
+============================================================
+最终优化模型已保存为：final_optimized_model.pkl
+性能对比报告已保存为：稀有类别优化性能对比.csv
+优化报告已保存为：稀有类别优化报告.csv
+
+============================================================
+最终优化总结：
+============================================================
+          指标    优化前（基准）  优化后（稀有样本过采样）        变化量    变化率
+  整体RMSE（美元） 28775.0100    27429.8400 -1345.1700 -4.67%
+  整体R²（拟合优度）     0.8921        0.9019     0.0098   1.1%
+稀有样本RMSE（美元） 30636.8100    29257.4500 -1379.3600  -4.5%
+      稀有样本R²     0.8923        0.9018     0.0095  1.06%
+
+✅ 稀有类别优化成功！整体RMSE降低1345.17美元
+✅ 稀有样本预测效果显著提升！RMSE降低1379.36美元（4.5%）
+
+进程已结束，退出代码为 0

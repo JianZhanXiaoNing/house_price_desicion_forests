@@ -1,0 +1,133 @@
+==================================================
+步骤1：加载数据并初步探索
+==================================================
+数据形状（行数×列数）：(1460, 81)
+
+前5行数据预览：
+   Id  MSSubClass MSZoning  ...  SaleType  SaleCondition SalePrice
+0   1          60       RL  ...        WD         Normal    208500
+1   2          20       RL  ...        WD         Normal    181500
+2   3          60       RL  ...        WD         Normal    223500
+3   4          70       RL  ...        WD        Abnorml    140000
+4   5          60       RL  ...        WD         Normal    250000
+
+[5 rows x 81 columns]
+
+缺失值比例（缺失率>0的特征）：
+PoolQC          0.995205
+MiscFeature     0.963014
+Alley           0.937671
+Fence           0.807534
+MasVnrType      0.597260
+FireplaceQu     0.472603
+LotFrontage     0.177397
+GarageType      0.055479
+GarageYrBlt     0.055479
+GarageFinish    0.055479
+GarageQual      0.055479
+GarageCond      0.055479
+BsmtExposure    0.026027
+BsmtFinType2    0.026027
+BsmtQual        0.025342
+BsmtCond        0.025342
+BsmtFinType1    0.025342
+MasVnrArea      0.005479
+Electrical      0.000685
+dtype: float64
+
+特征矩阵形状：(1460, 79)，目标变量形状：(1460,)
+
+训练集规模：(1168, 79)，测试集规模：(292, 79)
+训练集目标变量均值：181441.54 美元
+测试集目标变量均值：178839.81 美元
+
+==================================================
+步骤2：构建数据预处理流水线
+==================================================
+分类特征数量：43，示例：['MSZoning', 'Street', 'Alley', 'LotShape', 'LandContour']
+数值特征数量：36，示例：['MSSubClass', 'LotFrontage', 'LotArea', 'OverallQual', 'OverallCond']
+
+预处理流水线构建完成：
+- 数值特征：中位数填充
+- 分类特征：'Missing'填充 + 独热编码
+
+==================================================
+步骤3：训练基础决策森林模型
+==================================================
+
+执行5折交叉验证...
+
+5折交叉验证结果：
+平均R²：0.8356（±0.0479）
+平均RMSE：30866.11 美元（±4660.71）
+
+测试集评估结果（基础模型）：
+R²：0.8892（越接近1越好，表示模型解释力）
+RMSE：29150.85 美元（平均预测误差）
+MAE：17788.78 美元（平均绝对误差）
+
+==================================================
+步骤4：网格搜索优化模型参数
+==================================================
+
+待搜索参数网格：
+- regressor__n_estimators: [100, 200, 300]
+- regressor__max_depth: [None, 10, 20, 30]
+- regressor__min_samples_split: [2, 5, 10]
+- regressor__min_samples_leaf: [1, 2, 4]
+
+开始网格搜索（耗时较长，耐心等待...）
+Fitting 5 folds for each of 108 candidates, totalling 540 fits
+
+最优参数组合：
+- regressor__max_depth: 20
+- regressor__min_samples_leaf: 1
+- regressor__min_samples_split: 2
+- regressor__n_estimators: 300
+
+最优参数下5折交叉验证R²：0.8393
+
+最优模型测试集评估结果：
+R²：0.8907（较基础模型提升：0.0014）
+RMSE：28961.17 美元（较基础模型降低：189.68）
+MAE：17503.33 美元
+
+==================================================
+步骤5：特征重要性分析与可视化
+==================================================
+
+Top10重要特征（影响房价的核心因素）：
+    feature  importance
+OverallQual    0.557113
+  GrLivArea    0.122775
+TotalBsmtSF    0.034011
+   2ndFlrSF    0.030604
+ BsmtFinSF1    0.028459
+   1stFlrSF    0.025920
+    LotArea    0.018195
+ GarageArea    0.015494
+ GarageCars    0.013758
+  YearBuilt    0.012495
+
+特征重要性可视化图已保存为：feature_importance_top20.png
+
+==================================================
+步骤6：保存最优模型
+==================================================
+最优模型已保存至：ames_house_price_rf_model.pkl
+
+后续加载模型并预测新数据的代码：
+import joblib
+loaded_model = joblib.load('ames_house_price_rf_model.pkl')
+new_data = pd.read_csv('new_house_data.csv')  # 新房屋数据
+new_data = new_data.drop('Id', axis=1) if 'Id' in new_data.columns else new_data
+new_price_pred = loaded_model.predict(new_data)
+print('新房屋预测售价：', new_price_pred)
+
+==================================================
+Ames房屋售价预测决策森林模型构建完成！
+核心输出文件：
+1. ames_house_price_rf_model.pkl - 最优模型文件
+2. feature_importance_top20.png - 特征重要性可视化图
+3. new_house_price_pred.csv - 新数据预测结果（若执行预测）
+==================================================
